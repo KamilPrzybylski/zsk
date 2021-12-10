@@ -1,43 +1,55 @@
 #include <iostream>
-
 using namespace std;
-class Worker{
-    public:
-    string name;
-    string surname;
-    string personality;
-    int year;
-    float cm;
-    char plec;
-    void showAllData();
+
+class Animal{
+	public:
+		string name, breed, voice;
+		float weight, height;
+		
+		void funcPublicAnimal(){
+			cout<< "Funkcja publiczna klasy Animal"<<endl;
+		}
+		
+		void setVaccination(bool pVaccination){
+			vaccination=pVaccination;
+		}
+		
+		bool getVaccination(){
+			return vaccination;
+		}
+		
+		void funcAnimal(){
+			cout<< "Funkcja Animal"<<endl;
+		}
+		
+	private:
+		bool vaccination;
 };
 
-void Worker::showAllData()
-{
-    cout << "Imiê pracownika: " << name;
-    cout << "\nNazwisko pracownika: " <<surname;
-    cout << "\nNarodowoœæ pracownika: " << personality;
-    cout << "\nRok urodzenia pracownika: " << year;
-    cout << "\nWzrost pracownika: " << cm;
-    cout << "\nP³eæ pracownika: " ;
-    switch(plec){
-        case 'm': cout<<"Mê¿czyzna";
-    };
-    switch(plec){
-        case 'w': cout<<"Kobieta";
-    };
+class Dog: public Animal{
+	public:
+		void aport(){
+			cout<<"Aportowanie"<<endl;
+		};
+		
+		void funcAnimal(){
+			cout<< "Funkcja Animal w klasie Dog"<<endl;
+		}
 };
-    int main()
-{
-    setlocale(LC_CTYPE, "polish");
 
-    Worker pracownik1;
-    pracownik1.surname = "Nowak";
-    pracownik1.name = "Krystian";
-    pracownik1.year = 2006;
-    pracownik1.personality = "Polska";
-    pracownik1.cm = 180,3;
-    pracownik1.plec = 'm';
-    pracownik1.showAllData();
-    return 0;
+int main(int argc, char** argv) {
+	setlocale(LC_CTYPE,"polish");
+	Animal zwierze;
+	zwierze.funcPublicAnimal();
+	zwierze.setVaccination(1);
+	cout<<zwierze.getVaccination()<<endl;
+	zwierze.funcAnimal();
+	
+	Dog burek;
+	burek.funcPublicAnimal();
+	burek.aport();
+	burek.funcAnimal();
+	burek.voice = "Ha³ Ha³";
+	cout<<burek.voice<<endl;
+	return 0;
 }
